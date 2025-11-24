@@ -6,7 +6,7 @@ namespace Tyuiu.PankovaAA.Sprint5.Task1.V16.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "OutPutFileTask1.txt");
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
 
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
@@ -18,13 +18,15 @@ namespace Tyuiu.PankovaAA.Sprint5.Task1.V16.Lib
 
             using (StreamWriter writer = new StreamWriter(path))
             {
+                writer.WriteLine("Табулирование функции F(x) = sin(x) + 2x/3 - cos(x)*4x");
+                writer.WriteLine($"Диапазон: [{startValue}; {stopValue}]");
+                writer.WriteLine("x\t\tf(x)");
+                writer.WriteLine("----------------------");
+
                 for (int x = startValue; x <= stopValue; x++)
                 {
-                    
                     double y = CalculateFunction(x);
-                    string strY = Convert.ToString(y);
-
-                    writer.WriteLine(strY);
+                    writer.WriteLine($"{x}\t\t{y:F2}");
                 }
             }
 
@@ -35,7 +37,6 @@ namespace Tyuiu.PankovaAA.Sprint5.Task1.V16.Lib
         {
             try
             {
-                
                 double term1 = Math.Sin(x);
                 double term2 = (2.0 * x) / 3.0;
                 double term3 = Math.Cos(x) * 4 * x;
