@@ -19,7 +19,7 @@ namespace Tyuiu.PankovaAA.Sprint5.Task1.V16.Lib
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double y = CalculateFunction(x);
-                    string result = y.ToString("F2", CultureInfo.InvariantCulture); 
+                    string result = y.ToString("F2"); 
 
                     if (x < stopValue)
                     {
