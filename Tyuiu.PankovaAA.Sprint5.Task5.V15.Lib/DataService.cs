@@ -13,17 +13,19 @@ namespace Tyuiu.PankovaAA.Sprint5.Task5.V15.Lib
 
             foreach (string numStr in numbers)
             {
+                if (numStr == "") continue;
                 double num = Convert.ToDouble(numStr.Replace(".", ","));
 
-                if (num % 5 == 0)
+                if (num > 0 && num % 5 == 0 && num < minNumber)
                 {
-                    if (num < minNumber) minNumber = num;
+                    minNumber = num;
                 }
             }
 
             return Math.Round(minNumber, 3);
         }
-    }
-}
+            }
+        }
+
     
 
